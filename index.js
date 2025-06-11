@@ -10,7 +10,7 @@ const portNo = 8084;
 app.use(express.json());
 
 //conncetion with moongoose
-mongoose.connect("mongodb://127.0.0.1:27017/jobapp")
+mongoose.connect("mongodb+srv://rajnandini2039:Snqr9mKiwRSftIHO@cluster0.8yi10uo.mongodb.net/")
 .then(() => console.log("db connected successfullly"))
 .catch(err => console.log(`Error connecting databse`, err)) ;
 
