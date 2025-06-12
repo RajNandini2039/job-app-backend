@@ -19,7 +19,7 @@ res.status(400).json({
 
 const listJob = async (req, res) => {
     const minSalary = req.query.minSalary || 0;
-    console.log(minSalary);
+   
     const jobs = await jobModel.find({
         salary: {
             $gte : minSalary
@@ -29,7 +29,7 @@ const listJob = async (req, res) => {
      res.json({
         success: true,
         message: "list job api",
-        results : jobs
+        results : jobs,
     });
 };
 
@@ -45,7 +45,7 @@ const editJob = async (req, res) => {
     // });
     const fields ={...req.body};
     delete fields._id;
-    await jobModel.findByIdAndUpdate(req.body._id, { ...req.body});
+    await jobModel.findByIdAndUpdate(req.body._id, { ...fields});
     res.json({
         success: true,
         message: "edit job api"
