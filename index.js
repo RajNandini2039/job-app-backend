@@ -1,8 +1,11 @@
 const express = require("express");
 const jobRoutes = require("./routes/job.routes");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+
 
 const app = express();
+dotenv.config();
 const portNo = 8084;
 //api/API_Version/Module_name/API_Name
 
@@ -10,7 +13,7 @@ const portNo = 8084;
 app.use(express.json());
 
 //conncetion with moongoose
-mongoose.connect("mongodb+srv://rajnandini2039:Snqr9mKiwRSftIHO@cluster0.8yi10uo.mongodb.net/")
+mongoose.connect(process.env.DB_URL)
 .then(() => console.log("db connected successfullly"))
 .catch(err => console.log(`Error connecting databse`, err)) ;
 

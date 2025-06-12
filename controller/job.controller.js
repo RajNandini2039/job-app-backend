@@ -34,7 +34,18 @@ const listJob = async (req, res) => {
 };
 
 
-const editJob = (req, res) => {
+const editJob = async (req, res) => {
+    console.log(req.body);
+    // await jobModel.updateOne({
+    //     _id: req.body.title
+    // } , {
+    //     $set: {
+    //         title: req.body.title
+    //     }
+    // });
+    const fields ={...req.body};
+    delete fields._id;
+    await jobModel.findByIdAndUpdate(req.body._id, { ...req.body});
     res.json({
         success: true,
         message: "edit job api"
@@ -43,7 +54,11 @@ const editJob = (req, res) => {
 
 
 
-const deleteJob =(req, res) => {
+const deleteJob = async (req, res) => {
+    // await jobModel.deleteOne({_id: req.body._id});
+    // await jobModel.deleteMany({_id: req.body._id});
+
+    await jobModel.findByIdAndDelete(req.body._id);
     res.json({
         success: true,
         message: "delete job api"
