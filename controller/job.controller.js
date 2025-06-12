@@ -9,7 +9,7 @@ const createJob = async (req, res) => {
         message: "job created successfully"
     })
 }catch(err){
-res.status(400).json({
+res.status(500).json({
     success: false,
     message: "Invalid data"
 })
