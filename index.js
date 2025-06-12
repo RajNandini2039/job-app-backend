@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 
 const app = express();
 dotenv.config();
-const portNo = 8086;
+const portNo = 8084;
 //api/API_Version/Module_name/API_Name
 
 //middleware
